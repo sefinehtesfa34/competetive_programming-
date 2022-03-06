@@ -12,4 +12,8 @@ class Solution:
             if not check:
                 l.append(-1)
         return l
+<<<<<<< HEAD
                 
+=======
+                
+>>>>>>> 428efd98f9e5fd556ccbe66ab718af402155edcc
