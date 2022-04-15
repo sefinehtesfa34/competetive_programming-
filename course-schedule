@@ -1,0 +1,87 @@
+from collections import defaultdict
+class Solution:
+    def canFinish(self, numCourses: int, prerequ: List[List[int]]) -> bool:
+        
+        queue=deque()
+        indegree=defaultdict(list)
+        graph=defaultdict(list)
+        for suc,pre in prerequ:
+            if pre in graph:
+                graph[pre].append(suc)
+            else:
+                graph[pre]=[suc]
+            if suc in indegree:
+                indegree[suc]+=1
+            else:
+                indegree[suc]=1
+        for _,pre in prerequ:
+            
+            if not pre in indegree:
+                queue.append(pre)
+        count=0
+        while queue:
+            
+            count+=1
+            pre=queue.popleft()
+            for suc in graph[pre]:
+                indegree[suc]-=1
+                if indegree[suc]==0:
+                    queue.append(suc)
+                    del indegree[suc]
+            del graph[pre]
+        return len(indegree)==0
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+            
+            
+            
+            
