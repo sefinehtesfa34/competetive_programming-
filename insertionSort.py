@@ -40,3 +40,10 @@ if __name__ == '__main__':
     arr = list(map(int, input().rstrip().split()))
 
     insertionSort1(n, arr)
+'''
+k = 13
+A = [1 2 4 7 11 45]
+B = [2 9 11 12 22 23]
+
+
+'''

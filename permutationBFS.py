@@ -1,4 +1,4 @@
-from collections import deque
+from collections import deque
 def find_permutations(nums):
   result = deque([[]])
   for num in nums:

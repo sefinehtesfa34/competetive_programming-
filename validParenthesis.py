@@ -1,17 +1,16 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        dictionary={"[":"]","{":"}","(":")"}
-        l=[]
-        for i in s:
-            if i in dictionary.keys():
-                l.append(i)
-            if i in dictionary.values():
-                if len(l)==0:
-                    return False
-                else:
-                    poped=l.pop()
-                    if i!=dictionary[poped]:
-                        return False
-        if len(l)==0:
-             return True
+        opened = 0
+        closed = 0
+        for index in range(len(s)):
+            opened += int(s[index] == "(")
+            closed += int(s[index] ==")")
+            if closed > opened:
+                return False 
+        return opened == closed 
+solution  = Solution()
+s = input()
+result = solution.isValid(s)
+print(result)
+
                 
