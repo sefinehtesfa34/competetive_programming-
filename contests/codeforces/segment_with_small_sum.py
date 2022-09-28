@@ -6,7 +6,7 @@ right = 0
 sum = 0
 while  right < len(nums):
     sum += nums[right]
-    while sum > s:
+    while sum > s and left < len(nums):
         sum -= nums[left]
         left += 1
     longest = max(longest, right - left + 1)
