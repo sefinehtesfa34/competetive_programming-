@@ -10,5 +10,6 @@ while  right < len(nums):
         sum -= nums[left]
         left += 1
     longest = max(longest, right - left + 1)
+    right += 1
 print(longest)
 
