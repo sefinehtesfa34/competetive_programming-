@@ -7,7 +7,10 @@ class Solution:
         stack = []
         operations = ["+","-","*","/"]
         for char in expression:
-            if self.isEmpty(stack) or self.isOperation(char, operations):
+            if self.isEmpty(stack):
+                stack.append(char)
+                continue 
+            if self.isOperation(char, operations):
                 stack.append(char)
                 continue 
             oper = stack.pop()
