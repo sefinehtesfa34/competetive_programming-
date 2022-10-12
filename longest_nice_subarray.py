@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def longestNiceSubarray(self, nums: List[int]) -> int:
         xor = left = longest = 0
