@@ -1,6 +1,4 @@
-from collections import Counter, defaultdict, deque
-def isBound(row, col):
-    return 0 <= row < n and 0 <= col < m 
+from collections import defaultdict, deque
 def find(x):
     if x == parent[x]:
         return x 
@@ -15,7 +13,6 @@ def union(x, y):
 n, m = list(map(int, input().split()))
 graph = []
 parent = {}
-cycle = defaultdict(int)
 for _ in range(n):
     path = input()
     graph.append(path)
