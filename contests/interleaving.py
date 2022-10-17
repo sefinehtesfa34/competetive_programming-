@@ -4,7 +4,7 @@ class Solution:
         self.answer = False
         def isInterleave(ptr1, ptr2):
             return ptr1 == len(ptr1) and ptr2 == len(ptr2)
-        
+
         def dp(ptr1, ptr2, ptr3):
             if (ptr1, ptr2) in memo:
                 return memo[(ptr1, ptr2)]
@@ -17,7 +17,6 @@ class Solution:
             memo[(ptr1, ptr2)] = self.answer
             return self.answer
         return dp(0, 0, 0)
-    
       
     
     
