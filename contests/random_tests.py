@@ -14,7 +14,6 @@ class Solution:
         
     def binary_to_decimal(self, binary):
         decimal = 0
-        pointer = len(binary) - 1
         decimal = int(binary, 2)
         return decimal 
     def bitShift(self, decimal):
