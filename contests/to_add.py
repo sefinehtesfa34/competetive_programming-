@@ -23,13 +23,10 @@ def main():
             resultNum = nums[index]
         prev = nums[index]
     print(resultCount, resultNum)
-    
-    
-    
-        
-    
-    
 main()
+
+
+
     
     
     
