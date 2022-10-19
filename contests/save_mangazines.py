@@ -1,3 +1,4 @@
+from cmath import inf
 from heapq import heapify, heappop
 from typing import Counter
 
@@ -9,21 +10,27 @@ def getNumBoxes():
 def getMagazines():
     return list(map(int, input().split()))
 def getMaxMagazines(magazines, lids):
-    bestSum = 0
-    for index in range(len(lids)):
-        if lids[index] == '1':
-            bestSum += magazines[index]
-    return updateBestSum(magazines, list(lids), bestSum)
-# bestSum = max(bestSum, curSum), Update the previous sum if the current sum is greater than
-# The previous sum
-def updateBestSum(magazines, lids, bestSum):
-    curSum = bestSum 
-    for index in range(len(lids) - 1):
-        if lids[index] == '0' and lids[index + 1] == '1':
-            lids[index + 1] = '0'
-            curSum += (magazines[index] - magazines[index + 1])
-            bestSum = max(bestSum, curSum)
-    return bestSum 
+    curMin = inf
+    curSum = 0
+    index = 0
+    result = 0
+    while index < len(lids):
+        while index < len(lids) and lids[index] == '1':
+            curSum += magazines[index]            
+            curMin = min(curMin, magazines[index])
+            index += 1
+        if index == len(lids):
+            break 
+        print(curSum)
+        result += max(0, curSum - curMin)
+        curSum = magazines[index]
+        curMin = magazines[index]
+        index += 1
+
+    return result 
+        
+            
+    
 
 def getLids():
     return input() 
