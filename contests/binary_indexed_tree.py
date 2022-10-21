@@ -26,6 +26,12 @@ class Solution:
             start  = k - distanace_from_current
             tree[k] = prefix_sum[k] - prefix_sum[start]
         return tree 
+    def update(self, tree, k, x):
+        
+        while (k <= n):
+            tree[k] += x 
+            k += k & -k 
+        
         
     def sum_query(self, k, tree):
         current_sum = 0
