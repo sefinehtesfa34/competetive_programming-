@@ -18,19 +18,17 @@ class Solution:
         # where  P(k) is the largest power of two that divides k
         # tree[k] = SUMq(1, k) - SUMq(1, k - p(k))
         # p(k) = k&-k
-        prefix_sum = list(accumulate(nums, initial= 0))
+        # prefix_sum = list(accumulate(nums, initial= 0))
         tree = [0]*(len(nums) + 1)
-        for index in range(len(nums)):
-            k = index
-            distanace_from_current =  k & -k
-            start  = k - distanace_from_current
-            tree[k] = prefix_sum[k] - prefix_sum[start]
+        for k in range(len(nums)):
+            self.update(tree, k, nums[k])
         return tree 
+    
     def update(self, tree, k, x):
-        
-        while (k <= n):
+        while (k <= len(tree)):
             tree[k] += x 
-            k += k & -k 
+            k +=( k & -k )
+        return tree 
         
         
     def sum_query(self, k, tree):
