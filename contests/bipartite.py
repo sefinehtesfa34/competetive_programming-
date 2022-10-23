@@ -1,38 +1,26 @@
-from collections import defaultdict
+from typing import List
 
 
 class Solution:
-    def bipartite(self):
-        vertices = int(input())
-        edges = int(input())
-        graph = self.build_graph(edges)
-        colors = [-1]* vertices # Uncolored all vertices initially
-        colors[0] = 1 # 1 is a color representation for color Red and 0 is for Blue color. 
-        return print(self.dfs(1, graph, colors))
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        colors = [-1]*(len(graph))
+        visited = set()
+        for node in range(len(graph)):
+            colors[node] = 0
+            if node not in  visited:
+                result = self.dfs(node, graph, colors, visited)
+                if not result:
+                    return False
+        return True 
     
-    def dfs(self, current, graph, colors, visited = set()):     
+    def dfs(self, current, graph, colors, visited):     
         visited.add(current)
         for neighbor in graph[current]:
-            if colors[neighbor - 1] == colors[current - 1]:
+            if colors[neighbor] == colors[current]:
                 return False 
-            colors[neighbor - 1] = int(not colors[current - 1])
+            colors[neighbor] = int(not colors[current])
             if neighbor not in visited:
                 result = self.dfs(neighbor, graph, colors, visited)
                 if result == False :
                     return False 
         return True 
-    
-    def build_graph(self,  edges):
-        graph = defaultdict(list)
-        for _ in range(edges):
-            node1, node2 = list(map(int, input().split()))
-            graph[node1].append(node2)
-            graph[node2].append(node1)
-        return graph 
-        
-    
-solution = Solution()            
-solution.bipartite()
-      
-        
-        
