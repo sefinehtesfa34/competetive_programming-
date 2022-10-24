@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         self.answer = []
@@ -15,4 +18,5 @@ class Solution:
         
         self.backtrack(opened - 1, closed,  candidate + ["("])
         self.backtrack(opened, closed - 1,  candidate + [')'])
+        
         
