@@ -4,21 +4,35 @@ class Solution:
         graph = defaultdict(list)
         for u, v, w in times:
             graph[u].append((v, w))
-            
-        priority_queue = []
-        heappush(priority_queue, (0,k))
+        priority_queue = [(0, k)]
         
         while priority_queue:
-            weight, parent = heappop(priority_queue)
-            self.nodes.add(parent)
-            
+            weight, node = heappop(priority_queue)
+            self.nodes.add(node)
             if len(self.nodes) == n:
                 return weight
-            
-            for child, child_weight in graph[parent]:
-                
+            for child, child_weight in graph[node]:
                 if child not in self.nodes:
                     heappush(priority_queue, (weight + child_weight, child))
-                    
         return -1
-   
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
