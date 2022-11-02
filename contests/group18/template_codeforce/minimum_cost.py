@@ -20,7 +20,7 @@ def getMinimumCost(n, m, connections):
         if size[par_node1 - 1] < size[par_node2 - 1]:
             par_node1, par_node2 = par_node2, par_node1
         size[par_node1 - 1] += size[par_node2 - 1]
-        parent[par_node1] = par_node2
+        parent[par_node2] = par_node1
         
     total_cost = 0
     for node1, node2, weight in connections:
