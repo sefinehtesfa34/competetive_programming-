@@ -11,8 +11,10 @@ class Solution:
         
     def get_parent(self, bit):
         return bit - (bit & -bit)
+    
     def get_next(self, bit):
         return bit + (bit & -bit)
+    
     def get_sum(self, data, index):
         index += 1
         cur_sum = 0
