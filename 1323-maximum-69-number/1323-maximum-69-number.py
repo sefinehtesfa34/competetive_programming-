@@ -1,39 +1,18 @@
 class Solution:
     def maximum69Number (self, num: int) -> int:
         
-        length, first_index = self.find_length(num)
-        if first_index == -1:
-            return num
-        
         answer = 0
-        cur_length = length
-        while num:
-            remainder = num % 10
-            num //= 10
-            if length - cur_length + 1 == first_index:
-                remainder = 9
-            answer += 10 ** (length - cur_length) * remainder
-            cur_length -= 1
-            
-        return answer
-    
-    
-    
-    def find_length(self, num):
-        
-        length = 0
-        first_index = -1
-        while num:
-            remainder = num % 10
-            num //= 10
-            length += 1
+        first_six_index = -1
+        cur_digit = 0
+        cur_num = num
+        while cur_num:
+            remainder = cur_num % 10
+            cur_num //= 10
             if remainder == 6:
-                first_index = length
-            
-        return length, first_index
-    
-        
+                first_six_index = cur_digit
+            cur_digit += 1
+        return num if first_six_index == -1 else num + 3 * 10**first_six_index
     
     
     
-        
+    
