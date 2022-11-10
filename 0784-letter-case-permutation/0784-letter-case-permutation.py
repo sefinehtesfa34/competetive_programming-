@@ -4,15 +4,12 @@ class Solution:
         answer = []
         def backtrack(index, temp):
             if len(temp) == len(s):
-                answer.append("".join(temp))
+                answer.append("".join(temp)) 
             if index == len(s):
                 return 
-            if s[index] in ascii_lowercase:
-                backtrack(index + 1, temp + [ascii_uppercase[ord(s[index]) - ord('a')]])
-            if s[index] in ascii_uppercase:
-                backtrack(index + 1, temp + [ascii_lowercase[(ord(s[index])) - ord('A')]])
+            if s[index].isalpha():
+                backtrack(index + 1, temp + [s[index].swapcase()])
             backtrack(index + 1, temp + [s[index]])
-                
         backtrack(0, [])
         return answer
     
