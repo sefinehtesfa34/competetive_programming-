@@ -17,6 +17,7 @@ class Solution:
             frequency[char] -= 1
             if frequency[char] == 0:
                 del frequency[char]
+        
         if not frequency:
             answer.append(0)
         index = len(target)
