@@ -13,18 +13,17 @@ class Solution:
         for node in range(n):
             if indegree[node] == 1:
                 queue.append(node)
-        visited = set()
+        # visited = set()
         while n > 2:
             size = len(queue)
             n -= size
             for _ in range(size):
                 front = queue.popleft()
-                visited.add(front)
+                # visited.add(front)
                 for depend in graph[front]:
                     indegree[depend] -= 1
                     if indegree[depend] == 1:
-                        if depend not in visited:
-                            queue.append(depend)
+                        queue.append(depend)
         
         return queue
     
