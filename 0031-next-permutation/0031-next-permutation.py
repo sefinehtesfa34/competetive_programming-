@@ -4,19 +4,27 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        last_index = -1
-        hashmap = {}
-        for index in range(len(nums)):
-            for curr in range(index + 1, len(nums)):
-                if nums[index] < nums[curr]:
-                    if index in hashmap:
-                        hashmap[index] = curr if nums[curr] < nums[hashmap[index]] else hashmap[index]
-                    else:
-                        hashmap[index] = curr 
-        for index in range(len(nums) - 1, -1, -1):
-            if index in hashmap:
-                nums[index], nums[hashmap[index]] = nums[hashmap[index]], nums[index] 
-                last_index = index 
-                break 
-        nums[last_index + 1:] = sorted(nums[last_index + 1:])
+        def reverse(left):
+            right = len(nums) - 1
+            left = max(0, left)
+            while left < right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+            return 
+                
+        right = len(nums) - 1
+        left = right - 1
+        while left >= 0 and nums[left] >= nums[right]:
+            left -= 1
+            right -=1
+        if left < 0:
+            return reverse(left)
+        
+        right = len(nums) - 1
+        while right >= 0 and nums[right] <= nums[left]:
+            right -= 1
+        nums[left], nums[right] = nums[right], nums[left]
+        return reverse(left + 1)
+        
         
