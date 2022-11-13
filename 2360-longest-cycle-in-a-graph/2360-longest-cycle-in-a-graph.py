@@ -3,10 +3,11 @@ class Solution:
         graph = {}
         self.longest = -2
         done = set()
+        distance = Counter()
+        
         for node in range(len(edges)):
             if edges[node] != -1:
                 graph[node] = edges[node]
-        distance = Counter()
         def dfs(current, distance, visited):
             if current in done:
                 return 
@@ -21,6 +22,7 @@ class Solution:
                 return
             distance[child] = distance[current] + 1
             dfs(child, distance, visited)
+            
         for node in range(len(edges)):
             if node not in done:
                 dfs(node, Counter(), set())
