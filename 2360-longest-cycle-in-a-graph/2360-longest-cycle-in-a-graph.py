@@ -9,10 +9,7 @@ class Solution:
             if edges[node] != -1:
                 graph[node] = edges[node]
         def dfs(current, distance, visited):
-            if current in done:
-                return 
-            
-            if current not in graph:
+            if current in done or current not in graph:
                 return 
             visited.add(current) 
             done.add(current)
@@ -27,4 +24,18 @@ class Solution:
             if node not in done:
                 dfs(node, Counter(), set())
         return self.longest + 1
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
