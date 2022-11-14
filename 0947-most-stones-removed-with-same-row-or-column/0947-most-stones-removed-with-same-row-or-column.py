@@ -26,6 +26,9 @@ class Solution:
         parent_point1 = self.find(parent, point1)
         parent_point2 = self.find(parent, point2)
         if parent_point1 != parent_point2:
+            if self.size[parent_point1] < self.size[parent_point2]:
+                parent_point1,parent_point2 = parent_point2, parent_point1
+                
             parent[parent_point2] = parent_point1
             self.size[parent_point1] += self.size[parent_point2]
     
