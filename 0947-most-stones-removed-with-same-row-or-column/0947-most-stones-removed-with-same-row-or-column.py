@@ -18,9 +18,10 @@ class Solution:
     
         
     def find(self, parent, point):
-        while point != parent[point]:
-            point = parent[point]
-        return point
+        if point == parent[point]:
+            return point
+        parent[point] = self.find(parent, parent[point])
+        return parent[point]
     
     def union(self, parent, point1, point2):
         parent_point1 = self.find(parent, point1)
