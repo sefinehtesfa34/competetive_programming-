@@ -2,11 +2,16 @@ from collections import *
 from math import *
 class Solution:
     def is_bound(self, grid, row, col):
+        
         return 0 <= row < len(grid) and 0 <= col < len(grid[0])
 
     def bfs(self, grid):
         queue = deque([(0, 0, 0)])
-        dir = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+        dir = [(0, 1), 
+               (1, 0), 
+               (-1, 0), 
+               (0, -1)
+               ]
         n = len(grid)
         m = len(grid[0])
         cost = 0
@@ -36,6 +41,7 @@ for _ in range(test):
         grid.append(input())
     result = solution.bfs(grid)
     print(result)
+    
 
 
 
