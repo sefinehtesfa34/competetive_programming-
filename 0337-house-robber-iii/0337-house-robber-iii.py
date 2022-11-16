@@ -11,13 +11,8 @@ class Solution:
         def dp(root, turn):
             if not root:
                 return 0
-            #rob the root
-            withRoot = withoutRoot = 0
-            if turn:
-                withRoot = root.val + dp(root.left, False) + dp(root.right, False)
+            withRoot = (root.val + dp(root.left, False) + dp(root.right, False)) if turn else 0
             withoutRoot = dp(root.left, True) + dp(root.right, True)
-            
-            # pass the root and rob the next level houses
             return max(withRoot, withoutRoot)
         return dp(root, True)
     
