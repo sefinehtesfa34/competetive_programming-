@@ -6,17 +6,19 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        preorder = preorder[::-1]
+        pointer = 0 
         def build(inorder):
-            
-            if not inorder or not preorder:
+            nonlocal pointer
+            if not inorder or pointer == preorder:
                 return None
-            root = TreeNode(preorder[-1])
-            index = inorder.index(preorder[-1])
-            preorder.pop()
+            
+            root = TreeNode(preorder[pointer])
+            index = inorder.index(preorder[pointer])
+            pointer += 1
             root.left = build(inorder[:index])
             root.right = build(inorder[index + 1:])
             return root
+        
         
         return build(inorder)
     
