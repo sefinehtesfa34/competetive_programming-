@@ -7,19 +7,19 @@
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         pointer = len(postorder) - 1
-        def build(inorder):
+        hashmap = {val:index for index, val in enumerate(inorder)}
+        def build(start, end):
             nonlocal pointer
-            if not inorder or pointer < 0:
+            if start > end:
                 return None
-            
             root = TreeNode(postorder[pointer])
-            index = inorder.index(postorder[pointer])
             pointer -= 1
-            root.right = build(inorder[index + 1:])
-            root.left = build(inorder[:index])
+            root.right = build(hashmap[root.val] + 1, end)
+            root.left = build(start, hashmap[root.val] - 1)
             return root
         
-        return build(inorder)
+        return build(0, len(inorder) - 1)
+    
             
             
             
