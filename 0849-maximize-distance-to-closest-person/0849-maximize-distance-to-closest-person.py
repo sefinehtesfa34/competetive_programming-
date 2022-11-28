@@ -10,7 +10,7 @@ class Solution:
                 cur_min = min(left, right)
                 max_result = max(max_result, cur_min)
             stack.append(index)
-            ones += int(seats[index] == 1)
+            ones += seats[index]
             dp[index] = (1 + dp[index - 1]) if seats[index] == 0 else 0
             max_result = max(max_result, dp[index]) if ones == 0 else max_result
             
