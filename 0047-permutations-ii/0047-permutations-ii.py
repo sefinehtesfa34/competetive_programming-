@@ -1,19 +1,17 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        chosen = {index:False for index in range(len(nums))}
-        answer = set()
-        nums.sort()
+        chosen = Counter(nums)
+        answer = []
         def backtrack(temp):
             if len(temp) == len(nums):
-                answer.add(tuple(temp))
+                answer.append(list(temp))
                 return
-            
-            for curr in range(len(nums)):
-                if chosen[curr] == False:
-                    chosen[curr] = True
-                    temp.append(nums[curr])
+            for curr in chosen:
+                if chosen[curr] > 0:
+                    chosen[curr] -= 1
+                    temp.append(curr)
                     backtrack(temp)
-                    chosen[curr] = False
+                    chosen[curr] += 1
                     temp.pop()
         backtrack([])
         
