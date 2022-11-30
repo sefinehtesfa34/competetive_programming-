@@ -9,10 +9,8 @@ class Solution:
             for curr in chosen:
                 if chosen[curr] > 0:
                     chosen[curr] -= 1
-                    temp.append(curr)
-                    backtrack(temp)
+                    backtrack(temp + [curr])
                     chosen[curr] += 1
-                    temp.pop()
         backtrack([])
         
         return answer
