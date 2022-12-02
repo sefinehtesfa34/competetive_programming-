@@ -1,6 +1,5 @@
 from collections import *
 def toposort(graph, n, start):
-    longest_path = 0
     indegree = Counter()
     queue = deque()
     dp = [1]*n
