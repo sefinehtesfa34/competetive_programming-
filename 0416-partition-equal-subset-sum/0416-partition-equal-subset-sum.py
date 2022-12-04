@@ -4,12 +4,14 @@ class Solution:
         if total_sum % 2 == 1:
             return False
         target_sum =  total_sum // 2
-        @cache
-        def dp(index, cur_sum):
-            if cur_sum == 0:
-                return True
-            if cur_sum < 0 or index == len(nums):
-                return False
-            return dp(index + 1, cur_sum - nums[index]) or dp(index + 1, cur_sum)
-        return dp(0, target_sum)
+        dp = [[0]*(target_sum + 1) for _ in range(len(nums) + 1)]
+        for index in range(len(nums)):
+            dp[index][0] = True
+        for row in range(1, len(nums) + 1):
+            for target in range(1, target_sum + 1):
+                if target >= nums[row - 1]:
+                    dp[row][target] = dp[row - 1][target - nums[row - 1]] or dp[row - 1][target]
+                else:
+                    dp[row][target] = dp[row - 1][target]
+        return dp[len(nums)][target_sum]
     
