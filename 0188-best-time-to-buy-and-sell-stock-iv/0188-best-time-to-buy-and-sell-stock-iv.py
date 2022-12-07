@@ -4,9 +4,9 @@ class Solution:
         def dp(index, turn, k):
             if index == len(prices) or k == 0:
                 return 0
-            buy = max(-prices[index] + dp(index + 1, False, k), dp(index + 1, turn, k))
-            sell = max(dp(index + 1, turn, k), prices[index] + dp(index + 1, True, k - 1))
-            return buy if turn else sell
+            return max(-prices[index] + dp(index + 1, False, k), dp(index + 1, turn, k)) \
+                if turn else max(dp(index + 1, turn, k), prices[index] + dp(index + 1, True, k - 1))
+            
         return dp(0, True, k)
     
     
