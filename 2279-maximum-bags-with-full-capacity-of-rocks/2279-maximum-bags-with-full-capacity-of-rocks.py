@@ -7,12 +7,10 @@ class Solution:
         answer = 0
         current = additionalRocks
         for value in remain:
-            if value == 0:
-                answer += 1
-            elif current >= value:
-                current -= value
-                answer += 1
-            else:
-                break
+            current -= value
+            if current < 0:
+                return answer
+            answer += 1
+            
         return answer
     
