@@ -12,10 +12,9 @@ class Solution:
             for word in strs:
                 if word[prev] > word[index]:
                     is_valid = False
-            pick = inf
-            if is_valid:
-                pick = dp(index + 1, index)
-            notPick = 1 + dp(index + 1, prev)
+                    break
+            pick = dp(index + 1, index) if is_valid else inf
+            notPick = 1 + dp(index + 1, prev) 
             return min(pick, notPick)
         
         return dp(0, 0)
