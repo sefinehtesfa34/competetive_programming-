@@ -9,13 +9,10 @@ class Solution:
             if index == n:
                 return 0
             is_valid = True
-            for word in strs:
-                if word[prev] > word[index]:
-                    is_valid = False
-                    break
+            if not all(word[prev] <= word[index] for word in strs):
+                is_valid = False
             pick = dp(index + 1, index) if is_valid else inf
             notPick = 1 + dp(index + 1, prev) 
             return min(pick, notPick)
-        
         return dp(0, 0)
     
