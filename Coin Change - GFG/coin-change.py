@@ -2,17 +2,14 @@
 
 class Solution:
     def count(self, coins, N, Sum):
+        # code here 
         dp = [0]*(Sum + 1)
         dp[0] = 1
         for coin in coins:
-            for target in range(1, Sum + 1):
-                if coin <= target:    
-                    dp[target] += dp[target - coin]
-                    
+            for cur in range(1, Sum + 1):
+                if cur >= coin:
+                    dp[cur] += dp[cur - coin]
         return dp[Sum]
-        
-        
-
 
 #{ 
  # Driver Code Starts
