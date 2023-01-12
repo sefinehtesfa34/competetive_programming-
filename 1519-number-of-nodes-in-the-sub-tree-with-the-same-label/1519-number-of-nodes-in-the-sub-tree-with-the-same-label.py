@@ -1,4 +1,3 @@
-from string import ascii_lowercase
 class Solution:
     def countSubTrees(self, n: int, edges: List[List[int]], labels: str) -> List[int]:
         graph = defaultdict(list)
