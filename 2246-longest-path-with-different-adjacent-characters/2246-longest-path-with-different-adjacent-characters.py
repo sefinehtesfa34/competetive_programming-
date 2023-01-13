@@ -10,11 +10,9 @@ class Solution:
                 if child == par:
                     continue
                 cur_max = dfs(child, current)
-                if s[child] == s[current]:
-                    self.max = max(self.max, cur_max)
-                    continue
-                second_max = max(second_max, min(first_max, cur_max))
-                first_max = max(first_max, cur_max)
+                if s[child] != s[current]:
+                    second_max = max(second_max, min(first_max, cur_max))
+                    first_max = max(first_max, cur_max)
             self.max = max(self.max, 1 + first_max + second_max)
             return 1 + first_max
         dfs(0, -1)
