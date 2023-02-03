@@ -10,23 +10,19 @@ def get_nums():
 def main():
     test = get_int()
     for _ in range(test):
-        n = get_nums()
+        n = get_int()
         word = input()
-        up = r = 0
+        count = Counter(word)
+        cur_max = 0
+        lt_c = Counter()
         for char in word:
-            if char == 'U':
-                up += 1
-            if char =='R':
-                r += 1
-            if char =='L':
-                r-=1
-            if char =='D':
-                up-= 1
-            if up + r >= 2:
-                print("YES")
-                break 
-        else:
-            print("NO")
+            cur_max = max(cur_max, len(lt_c) + len(count))
+            count[char] -= 1
+            if count[char] == 0:
+                del count[char]
+            lt_c[char] += 1
+            cur_max = max(cur_max, len(lt_c) + len(count))
+        print(cur_max)
         
         
 main()

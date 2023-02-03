@@ -22,7 +22,7 @@ def main():
                 r-=1
             if char =='D':
                 up-= 1
-            if up + r >= 2:
+            if [up, r] == [1, 1]:
                 print("YES")
                 break 
         else:
