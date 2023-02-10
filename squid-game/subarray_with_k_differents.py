@@ -1,3 +1,7 @@
+from ast import List
+from collections import Counter
+
+
 class Solution:
     def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
         def atmostK(nums, k):
