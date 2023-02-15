@@ -12,26 +12,28 @@ def main():
     for _ in range(test):
         n, c= get_nums()
         nums = get_nums()
-        cur = [num + index + 1 for index, num in enumerate(nums)]
-        
-        min_val = 1000000
-        cur_index = 0
+        min_val = float('inf')
+        cur_index = -1
         for index in range(n):
-            if cur[index] < min_val:
-                min_val = cur[index]
+            if index + 1 <= n - index and index + 1 + nums[index] < min_val:
                 cur_index = index 
-        c -= min_val
-        nums[cur_index] = 10000000000000
-        res = [num + min(index + 1, n - index) for index, num in enumerate(nums)]
-        res.sort()        
-        count = 1 if c >= 0 else 0 
-        index = 0
+                min_val = nums[index] + index + 1
+        c-= min_val
+        count = 1 if c >= 0 else 0
+        nums[cur_index] = float('inf')
+        cur = [num + min(index + 1, n - index) for index, num in enumerate(nums)]
+        cur.sort()
         cur_sum = 0
-        while index < n and cur_sum + res[index] <= c:
-            cur_sum += res[index]
-            index += 1
+        for index in range(n):
+            cur_sum += cur[index]
+            if cur_sum > c:
+                break 
             count += 1
         print(count)
             
+            
+        
+        
+                    
                 
 main()
