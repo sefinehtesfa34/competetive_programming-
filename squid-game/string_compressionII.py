@@ -1,4 +1,6 @@
-@cache
+class Solution:
+    def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
+        @cache
         def dp(ci, curr_running_char, curr_running_char_count, remains):
             
             if ci == len(s):
