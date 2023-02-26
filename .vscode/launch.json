@@ -51,8 +51,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/User/Desktop/competetive_programming-/dp",
-      "program": "c:/Users/User/Desktop/competetive_programming-/dp/build/Debug/outDebug",
+      "cwd": "c:/Users/User/Desktop/competetive_programming-",
+      "program": "c:/Users/User/Desktop/competetive_programming-/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
