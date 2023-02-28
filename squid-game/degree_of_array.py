@@ -1,7 +1,5 @@
 from typing import List
 from collections import Counter
-
-
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
         if len(nums) == 1:
@@ -32,11 +30,5 @@ class Solution:
                 low = mid + 1
         return high
     
-        
-        
-        
-        
-        
-        
         
         
