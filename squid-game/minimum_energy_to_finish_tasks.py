@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def minimumEffort(self, tasks: List[List[int]]) -> int:
         tasks = sorted(tasks, key = lambda x:-(x[0] - x[1]))
